@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap"
+      rel="stylesheet"
+    /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style.css" />
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script async src="./script.js"></script>
+  </head>
+  <body>
+    <header class="header">implement a todo list</header>
+    <main class="content">
+      <section class="todolist">
+        <header class="todolist__header">Pending list</header>
+
+        <div id = "add_todo">
+          <input class="todolist__input" />
+          <button id="submit_btn">submit</button>
+        </div>
+       
+
+        <ul id="todolist_container">
+        <li>
+        <span>todo</span>
+        <button class="deletebtn" id="${todo.id}">X</button>
+        <i class="fa fa-edit" id="${todo.id}"></i>
+        
+          <svg class="finish" id="${todo.id}" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ArrowForwardIcon" aria-label="fontSize small"><path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path></svg>
+        
+        
+      </li>
+        </ul>
+      </section>
+
+      <section class="completedlist">
+        <header class="todolist__header">completed list</header>
+        
+        <ul id="completedlist_container">
+        <li>
+        <svg id="${todo.id}" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ArrowBackIcon" aria-label="fontSize small"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg>
+
+          <span>todo</span>
+
+          <svg id="${todo.id}" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DeleteIcon" aria-label="fontSize small"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path></svg>
+          
+          <i id="${todo.id}" class="fa fa-edit"></i>
+
+        </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
