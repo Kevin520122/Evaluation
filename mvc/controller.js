@@ -27,6 +27,18 @@ const Controller = ((model, view) => {
     });
   };
 
+  const deleteDone = () => {
+    const completed_container = document.querySelector(view.domstr.completed_container);
+    completed_container.addEventListener("click", (event) => {
+      if (event.target.className === 'deletebtn') {
+        state.completedlist = state.completedlist.filter(
+          (todo) => +todo.id !== +event.target.id
+        );
+        model.deleteDone(event.target.id);
+      }
+    })
+  }
+
   const addTodo = () => {
     const inputbox = document.querySelector(view.domstr.inputbox);
     const submit_btn = document.querySelector(view.domstr.submit_btn);
@@ -53,31 +65,49 @@ const Controller = ((model, view) => {
 
   const editTodo = () => {
     const todocontainer = document.querySelector(view.domstr.todocontainer);
-    const edit_done = document.getElementById("submit_edit")
+   
     todocontainer.addEventListener('click', (event) => {
       if (event.target.className === 'fa fa-edit') {
         const cur = state.todolist.find((todo) => +todo.id === +event.target.id)
+        const index = state.todolist.indexOf(cur)
         const tmp = view.editTmp(state.todolist, event.target.id)
         view.render(todocontainer, tmp)
-
-        
-       
+        const edit_done = document.getElementById("submit_edit")
+        edit_done.addEventListener("click", (event) => {
+          const editbox = document.querySelector("#editbox");
+          cur.title = editbox.value
+          state.todolist[index] = cur
+          const tmp = view.editTmp(state.todolist, event.target.id)
+          view.render(todocontainer, tmp)
+          model.editTodo(cur.id, cur)
+        })     
       }
     });
 
-    // edit_done.addEventListener("click", (event) => {
-    //   const editbox = document.querySelector("#editbox");
-    //   cur.title = editbox.value
-    //   state.todolist = state.todolist.forEach((todo) => {
-    //     if(+todo.id === +cur.id){
-    //       todo.title = editbox.value
-    //     }
-    //   })
-    //   model.editTodo(cur.id, cur)
-
-    // })
     
   };
+
+  const editDone = () => {
+    const completed_container = document.querySelector(view.domstr.completed_container);
+   
+    completed_container.addEventListener('click', (event) => {
+      if (event.target.className === 'fa fa-edit') {
+        const cur = state.completedlist.find((todo) => +todo.id === +event.target.id)
+        const index = state.completedlist.indexOf(cur)
+        const tmp = view.editTmp2(state.completedlist, event.target.id)
+        view.render(completed_container, tmp)
+        const edit_done = document.getElementById("submit_edit")
+        edit_done.addEventListener("click", (event) => {
+          const editbox = document.querySelector("#editbox");
+          cur.title = editbox.value
+          state.completedlist[index] = cur
+          const tmp = view.editTmp2(state.completedlist, event.target.id)
+          view.render(completed_container, tmp)
+          model.editDone(cur.id, cur)
+        })     
+      }
+    });
+  }
 
   const completeTodo = async () => {
     const todocontainer = document.querySelector(view.domstr.todocontainer);
@@ -142,7 +172,9 @@ const Controller = ((model, view) => {
     addTodo();
     editTodo();
     completeTodo();
-    undo()
+    undo(),
+    deleteDone();
+    editDone();
   };
 
   return { bootstrap };
