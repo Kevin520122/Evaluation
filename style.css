@@ -1,108 +1,139 @@
 :root {
-	--height-header: 60px;
-	--height-todolist: 300px;
-	--height-todolist-header: 30px;
+  --height-header: 60px;
+  --height-todolist: 300px;
+  --height-todolist-header: 30px;
 
-	--width-todolist: 400px;
+  --width-todolist: 400px;
 
-	--color-green: rgb(30, 255, 0);
-	--color-red-button: rgb(148, 21, 21);
-	--color-red-li-hover: rgb(27, 172, 8);
+  
+
+  --Tan: #e6e2d3;
+  --Traffic-white: #f0f0f0;
+  --Yellow-green: #4caf50;
+  --Vermillion-red: #c94c4c;
+  --Blue: #008cba;
 }
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: "Ms Madi", cursive;
-	user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', cursive;
+  user-select: none;
 }
 html,
 body {
-	width: 100vw;
-	height: 100vh;
+  width: 100vw;
+  height: 100vh;
+	display: flex;
+	justify-content: center;
 }
 .header {
-	position: fixed;
-	height: var(--height-header);
-	width: 100%;
-	color: white;
-	padding-left: 10px;
+  position: fixed;
+  height: var(--height-header);
+  
+  color: white;
+  padding-left: 10px;
 
-	line-height: var(--height-header);
-	background: linear-gradient(to right, black, var(--color-green));
-	text-transform: capitalize;
-	font-size: 2rem;
-	letter-spacing: 2px;
+  line-height: var(--height-header);
+  background: var(--Traffic-white);
+  text-transform: capitalize;
+  font-size: 2rem;
+  letter-spacing: 2px;
+	width: 80%
 }
 .content {
-	width: 100%;
-	height: 100%;
-	/* padding-top: var(--height-header); */
-	background-color: blanchedalmond;
+  width: 100%;
+  height: 100%;
+  /* padding-top: var(--height-header); */
+  background-color: blanchedalmond;
 
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-.todolist, .completedlist{
-	height: var(--height-todolist);
-	width: var(--width-todolist);
-	background-color: var(--color-green);
-	box-shadow: 5px 5px 5px black;
-	border-radius: 5px;
+.todolist,
+.completedlist {
+  height: var(--height-todolist);
+  width: 35%;
+  background-color: var(--Traffic-white);
+  box-shadow: 5px 5px 5px black;
+  border-radius: 5px;
 
-	/* position: fixed;
+  /* position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%); */
 }
 
-.todolist__header,
-.todolist__input,
-ul li {
-	text-transform: capitalize;
-	font-size: 1rem;
-	letter-spacing: 2px;
 
-	width: 100%;
-	height: var(--height-todolist-header);
-	line-height: var(--height-todolist-header);
+li {
+  text-transform: capitalize;
+  font-size: 1rem;
+  letter-spacing: 2px;
 
-	border: none;
-	outline: none;
-	list-style: none;
-	padding-left: 10px;
+  width: 100%;
+  height: var(--height-todolist-header);
+  line-height: var(--height-todolist-header);
+
+  border: none;
+  outline: none;
+  list-style: none;
+  padding-left: 10px;
+
+	display: flex;
+  justify-content: flex-end;
+
+	background-color: var(--Tan);
+	margin-top: 5px;
+	border-radius: 5px
 }
 .todolist__header {
-	font-size: 1.6rem;
-	text-align: center;
+  font-size: 1.6rem;
+  text-align: center;
 }
-ul li {
-	display: flex;
-	justify-content: space-between;
-}
-ul li button {
-	margin-right: 10px;
-	border: none;
-	background-color: rgba(0, 0, 0, 0);
-	color: rgb(255, 0, 0);
-	font-size: 1.3rem;
-}
-ul li button:hover {
-	font-size: 1.4rem;
-}
-ul li button:active {
-	font-size: 1.2rem;
-}
-ul {
-	height: calc(
-		var(--height-todolist) - var(--height-todolist-header) * 2
-	);
-	overflow: auto;
-}
+
+
+
 ul li:hover {
-	background-color: var(--color-red-li-hover);
+  background-color: var(--color-red-li-hover);
 }
-ul li span {
-	overflow: hidden;
+
+
+
+#add_todo{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.todolist__input{
+	border-radius: 5px;
+}
+#submit_btn{
+	background-color: var(--Blue);
+	border-radius: 5px;
+	margin: 5px
+}
+
+.button-area{
+	display: flex;
+	justify-content: space-around;
+}
+
+.text-area{
+	text-align: center;
+	width: 50%
+}
+
+svg{
+	margin: 3px;
+
+}
+.deletebtn{
+	background-color: #c94c4c;
+}
+.editbtn{
+	background-color: #008cba;
+}
+.finish{
+	background-color: #4caf50;
 }
