@@ -95,7 +95,7 @@ li {
 
 
 ul li:hover {
-  background-color: var(--color-red-li-hover);
+  background-color: blueviolet;
 }
 
 
