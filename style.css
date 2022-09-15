@@ -30,15 +30,15 @@ body {
   position: fixed;
   height: var(--height-header);
   
-  color: white;
+  color: black;
   padding-left: 10px;
 
   line-height: var(--height-header);
   background: var(--Traffic-white);
   text-transform: capitalize;
-  font-size: 2rem;
-  letter-spacing: 2px;
-	width: 80%
+	width: 80%;
+  display: flex;
+  justify-content: space-around;
 }
 
 .content {
@@ -121,7 +121,6 @@ ul li:hover {
 
 svg{
 	margin: 3px;
-
 }
 .deletebtn{
 	background-color: #c94c4c;
@@ -135,7 +134,6 @@ svg{
 
 .undo{
   order: -2;
-  
 }
 
 #editbox{

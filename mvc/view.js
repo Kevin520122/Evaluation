@@ -52,7 +52,9 @@ const View = (() => {
         tmp += `
         <li>
 						<button id=${todo.id} class="undo">Undo</button>
-						<span>${todo.title}</span>
+						<div class="text-area">
+							<span>${todo.title}</span>
+						</div>
 						<button id=${todo.id} class="deletebtn">Delete</button>
 						<button id=${todo.id} class="editbtn">Edit</button>
 				  
@@ -91,7 +93,9 @@ const View = (() => {
     arr.forEach((todo) => {
       tmp += `
         <li>
-					<span>${todo.title}</span>
+					<div class="text-area">
+						<span>${todo.title}</span>
+					</div>
         	<button id=${todo.id} class="undo">Undo</button>
 					<button id=${todo.id} class="deletebtn">Delete</button>
 					<button id=${todo.id} class="editbtn">Edit</button>
