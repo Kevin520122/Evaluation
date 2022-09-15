@@ -6,7 +6,7 @@ const Controller = ((model, view) => {
   const state = new model.State();
   const deleteTodo = () => {
     const todocontainer = document.querySelector(view.domstr.todocontainer);
-    const deletebtn = document.querySelector('#delete');
+    const deletebtn = document.querySelector('.deletebtn');
 
     deletebtn.addEventListener('click', (event) => {
       state.todolist = state.todolist.filter(
@@ -15,7 +15,9 @@ const Controller = ((model, view) => {
       model.deleteTodo(event.target.id);
     });
     // todocontainer.addEventListener('click', (event) => {
-    //   if (event.target.id === 'delete') {
+    //   console.log(event.target.className)
+    //   cosole.log(event.target.id)
+    //   if (event.target.className === 'deletebtn') {
     //     state.todolist = state.todolist.filter(
     //       (todo) => +todo.id !== +event.target.id
     //     );
@@ -64,7 +66,7 @@ const Controller = ((model, view) => {
 
   const editTodo = () => {
     const todocontainer = document.querySelector(view.domstr.todocontainer);
-    const editbtn = document.querySelector('#edit');
+    const editbtn = document.querySelector('.editbtn');
     editbtn.addEventListener('click', (event) => {
       console.log(event.target.id);
 
@@ -138,27 +140,27 @@ const Controller = ((model, view) => {
 
   const completeTodo = async () => {
     const todocontainer = document.querySelector(view.domstr.todocontainer);
-    todocontainer.addEventListener('click', async (event) => {
-      if (event.target.id === 'done') {
-        console.log(event.target);
-        const cur = state.todolist.find(
-          (todo) => +todo.id === +event.target.id
-        );
-        console.log(cur);
-        //Remove todo from pending list
-        state.todolist = state.todolist.filter(
-          (todo) => +todo.id !== +event.target.id
-        );
-        await model.deleteTodo(event.target.id);
-        //Add todo in completed list
+    // todocontainer.addEventListener('click', async (event) => {
+    //   if (event.target.id === 'done') {
+    //     console.log(event.target);
+    //     const cur = state.todolist.find(
+    //       (todo) => +todo.id === +event.target.id
+    //     );
+    //     console.log(cur);
+    //     //Remove todo from pending list
+    //     state.todolist = state.todolist.filter(
+    //       (todo) => +todo.id !== +event.target.id
+    //     );
+    //     await model.deleteTodo(event.target.id);
+    //     //Add todo in completed list
 
-        const todo = new model.Todo(cur.title);
-        todo.completed = true;
-        await model.addDone(todo).then((todofromBE) => {
-          state.completedlist = [todofromBE, ...state.completedlist];
-        });
-      }
-    });
+    //     const todo = new model.Todo(cur.title);
+    //     todo.completed = true;
+    //     await model.addDone(todo).then((todofromBE) => {
+    //       state.completedlist = [todofromBE, ...state.completedlist];
+    //     });
+    //   }
+    // });
   };
 
   const undo = async () => {
