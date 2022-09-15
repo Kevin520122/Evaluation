@@ -6,24 +6,24 @@ const Controller = ((model, view) => {
   const state = new model.State();
   const deleteTodo = () => {
     const todocontainer = document.querySelector(view.domstr.todocontainer);
-    const deletebtn = document.querySelector('.deletebtn');
+    // const deletebtn = document.querySelector('.deletebtn');
 
-    deletebtn.addEventListener('click', (event) => {
-      state.todolist = state.todolist.filter(
-        (todo) => +todo.id !== +event.target.id
-      );
-      model.deleteTodo(event.target.id);
-    });
-    // todocontainer.addEventListener('click', (event) => {
-    //   console.log(event.target.className)
-    //   cosole.log(event.target.id)
-    //   if (event.target.className === 'deletebtn') {
-    //     state.todolist = state.todolist.filter(
-    //       (todo) => +todo.id !== +event.target.id
-    //     );
-    //     model.deleteTodo(event.target.id);
-    //   }
+    // deletebtn.addEventListener('click', (event) => {
+    //   state.todolist = state.todolist.filter(
+    //     (todo) => +todo.id !== +event.target.id
+    //   );
+    //   model.deleteTodo(event.target.id);
     // });
+    todocontainer.addEventListener('click', (event) => {
+      console.log(event.target.className)
+      console.log(event.target)
+      if (event.target.className === 'deletebtn') {
+        state.todolist = state.todolist.filter(
+          (todo) => +todo.id !== +event.target.id
+        );
+        model.deleteTodo(event.target.id);
+      }
+    });
   };
 
   const deleteDone = () => {
@@ -66,50 +66,50 @@ const Controller = ((model, view) => {
 
   const editTodo = () => {
     const todocontainer = document.querySelector(view.domstr.todocontainer);
-    const editbtn = document.querySelector('.editbtn');
-    editbtn.addEventListener('click', (event) => {
-      console.log(event.target.id);
+    // const editbtn = document.querySelector('.editbtn');
+    // editbtn.addEventListener('click', (event) => {
+    //   console.log(event.target.id);
 
-      //Locate current todo
-      const cur = state.todolist.find((todo) => +todo.id === +event.target.id);
-      //Locate current todo index
-      const index = state.todolist.indexOf(cur);
-      //re-render the page
-      const tmp = view.editTmp(state.todolist, event.target.id);
-      view.render(todocontainer, tmp);
+    //   //Locate current todo
+    //   const cur = state.todolist.find((todo) => +todo.id === +event.target.id);
+    //   //Locate current todo index
+    //   const index = state.todolist.indexOf(cur);
+    //   //re-render the page
+    //   const tmp = view.editTmp(state.todolist, event.target.id);
+    //   view.render(todocontainer, tmp);
 
-      const edit_done = document.getElementById('submit_edit');
-      edit_done.addEventListener('click', (event) => {
-        const editbox = document.querySelector('#editbox');
-        cur.title = editbox.value;
-        state.todolist[index] = cur;
-        const tmp = view.editTmp(state.todolist, event.target.id);
-        view.render(todocontainer, tmp);
-        model.editTodo(cur.id, cur);
-      });
-    });
-    // todocontainer.addEventListener('click', (event) => {
-    //   console.log(event.target.id)
-    //   if (event.target.id ==='edit') {
-    //     //Locate current todo
-    //     const cur = state.todolist.find((todo) => +todo.id === +event.target.id)
-    //     //Locate current todo index
-    //     const index = state.todolist.indexOf(cur)
-    //     //re-render the page
-    //     const tmp = view.editTmp(state.todolist, event.target.id)
-    //     view.render(todocontainer, tmp)
-
-    //     const edit_done = document.getElementById("submit_edit")
-    //     edit_done.addEventListener("click", (event) => {
-    //       const editbox = document.querySelector("#editbox");
-    //       cur.title = editbox.value
-    //       state.todolist[index] = cur
-    //       const tmp = view.editTmp(state.todolist, event.target.id)
-    //       view.render(todocontainer, tmp)
-    //       model.editTodo(cur.id, cur)
-    //     })
-    //   }
+    //   const edit_done = document.getElementById('submit_edit');
+    //   edit_done.addEventListener('click', (event) => {
+    //     const editbox = document.querySelector('#editbox');
+    //     cur.title = editbox.value;
+    //     state.todolist[index] = cur;
+    //     const tmp = view.editTmp(state.todolist, event.target.id);
+    //     view.render(todocontainer, tmp);
+    //     model.editTodo(cur.id, cur);
+    //   });
     // });
+    todocontainer.addEventListener('click', (event) => {
+      
+      if (event.target.className ==='editbtn') {
+        //Locate current todo
+        const cur = state.todolist.find((todo) => +todo.id === +event.target.id)
+        //Locate current todo index
+        const index = state.todolist.indexOf(cur)
+        //re-render the page
+        const tmp = view.editTmp(state.todolist, event.target.id)
+        view.render(todocontainer, tmp)
+
+        const edit_done = document.getElementById("submit_edit")
+        edit_done.addEventListener("click", (event) => {
+          const editbox = document.querySelector("#editbox");
+          cur.title = editbox.value
+          state.todolist[index] = cur
+          const tmp = view.editTmp(state.todolist, event.target.id)
+          view.render(todocontainer, tmp)
+          model.editTodo(cur.id, cur)
+        })
+      }
+    });
   };
 
   const editDone = () => {
@@ -140,27 +140,27 @@ const Controller = ((model, view) => {
 
   const completeTodo = async () => {
     const todocontainer = document.querySelector(view.domstr.todocontainer);
-    // todocontainer.addEventListener('click', async (event) => {
-    //   if (event.target.id === 'done') {
-    //     console.log(event.target);
-    //     const cur = state.todolist.find(
-    //       (todo) => +todo.id === +event.target.id
-    //     );
-    //     console.log(cur);
-    //     //Remove todo from pending list
-    //     state.todolist = state.todolist.filter(
-    //       (todo) => +todo.id !== +event.target.id
-    //     );
-    //     await model.deleteTodo(event.target.id);
-    //     //Add todo in completed list
+    todocontainer.addEventListener('click', async (event) => {
+      if (event.target.id === 'done') {
+        console.log(event.target);
+        const cur = state.todolist.find(
+          (todo) => +todo.id === +event.target.id
+        );
+        console.log(cur);
+        //Remove todo from pending list
+        state.todolist = state.todolist.filter(
+          (todo) => +todo.id !== +event.target.id
+        );
+        await model.deleteTodo(event.target.id);
+        //Add todo in completed list
 
-    //     const todo = new model.Todo(cur.title);
-    //     todo.completed = true;
-    //     await model.addDone(todo).then((todofromBE) => {
-    //       state.completedlist = [todofromBE, ...state.completedlist];
-    //     });
-    //   }
-    // });
+        const todo = new model.Todo(cur.title);
+        todo.completed = true;
+        await model.addDone(todo).then((todofromBE) => {
+          state.completedlist = [todofromBE, ...state.completedlist];
+        });
+      }
+    });
   };
 
   const undo = async () => {
