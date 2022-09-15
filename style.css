@@ -2,17 +2,14 @@
   --height-header: 60px;
   --height-todolist: 300px;
   --height-todolist-header: 30px;
-
   --width-todolist: 400px;
-
-  
-
   --Tan: #e6e2d3;
   --Traffic-white: #f0f0f0;
   --Yellow-green: #4caf50;
   --Vermillion-red: #c94c4c;
   --Blue: #008cba;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -20,6 +17,7 @@
   font-family: 'Nunito', cursive;
   user-select: none;
 }
+
 html,
 body {
   width: 100vw;
@@ -27,6 +25,7 @@ body {
 	display: flex;
 	justify-content: center;
 }
+
 .header {
   position: fixed;
   height: var(--height-header);
@@ -41,6 +40,7 @@ body {
   letter-spacing: 2px;
 	width: 80%
 }
+
 .content {
   width: 100%;
   height: 100%;
@@ -51,6 +51,7 @@ body {
   justify-content: space-around;
   align-items: center;
 }
+
 .todolist,
 .completedlist {
   height: var(--height-todolist);
@@ -58,11 +59,6 @@ body {
   background-color: var(--Traffic-white);
   box-shadow: 5px 5px 5px black;
   border-radius: 5px;
-
-  /* position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%); */
 }
 
 
@@ -81,24 +77,23 @@ li {
   padding-left: 10px;
 
 	display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
 
 	background-color: var(--Tan);
 	margin-top: 5px;
-	border-radius: 5px
+	border-radius: 5px;
+  overflow: hidden
 }
+
 .todolist__header {
   font-size: 1.6rem;
   text-align: center;
 }
 
 
-
 ul li:hover {
   background-color: blueviolet;
 }
-
-
 
 #add_todo{
 	display: flex;
@@ -108,7 +103,7 @@ ul li:hover {
 .todolist__input{
 	border-radius: 5px;
 }
-#submit_btn{
+#submit_btn, #submit_edit{
 	background-color: var(--Blue);
 	border-radius: 5px;
 	margin: 5px
@@ -134,6 +129,19 @@ svg{
 .editbtn{
 	background-color: #008cba;
 }
-.finish{
+.finish, .undo{
 	background-color: #4caf50;
+}
+
+.undo{
+  order: -2;
+  
+}
+
+#editbox{
+  width: 80%
+}
+
+button:hover{
+  background-color: #004369;
 }

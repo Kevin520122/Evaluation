@@ -31,7 +31,7 @@ const Controller = ((model, view) => {
       view.domstr.completed_container
     );
     completed_container.addEventListener('click', (event) => {
-      if (event.target.id === 'delete') {
+      if (event.target.className === 'deletebtn') {
         state.completedlist = state.completedlist.filter(
           (todo) => +todo.id !== +event.target.id
         );
@@ -66,28 +66,6 @@ const Controller = ((model, view) => {
 
   const editTodo = () => {
     const todocontainer = document.querySelector(view.domstr.todocontainer);
-    // const editbtn = document.querySelector('.editbtn');
-    // editbtn.addEventListener('click', (event) => {
-    //   console.log(event.target.id);
-
-    //   //Locate current todo
-    //   const cur = state.todolist.find((todo) => +todo.id === +event.target.id);
-    //   //Locate current todo index
-    //   const index = state.todolist.indexOf(cur);
-    //   //re-render the page
-    //   const tmp = view.editTmp(state.todolist, event.target.id);
-    //   view.render(todocontainer, tmp);
-
-    //   const edit_done = document.getElementById('submit_edit');
-    //   edit_done.addEventListener('click', (event) => {
-    //     const editbox = document.querySelector('#editbox');
-    //     cur.title = editbox.value;
-    //     state.todolist[index] = cur;
-    //     const tmp = view.editTmp(state.todolist, event.target.id);
-    //     view.render(todocontainer, tmp);
-    //     model.editTodo(cur.id, cur);
-    //   });
-    // });
     todocontainer.addEventListener('click', (event) => {
       
       if (event.target.className ==='editbtn') {
@@ -118,7 +96,7 @@ const Controller = ((model, view) => {
     );
 
     completed_container.addEventListener('click', (event) => {
-      if (event.target.id === 'edit') {
+      if (event.target.className === 'editbtn') {
         const cur = state.completedlist.find(
           (todo) => +todo.id === +event.target.id
         );
@@ -141,7 +119,7 @@ const Controller = ((model, view) => {
   const completeTodo = async () => {
     const todocontainer = document.querySelector(view.domstr.todocontainer);
     todocontainer.addEventListener('click', async (event) => {
-      if (event.target.id === 'done') {
+      if (event.target.className === 'finish') {
         console.log(event.target);
         const cur = state.todolist.find(
           (todo) => +todo.id === +event.target.id
@@ -168,7 +146,7 @@ const Controller = ((model, view) => {
       view.domstr.completed_container
     );
     completed_container.addEventListener('click', async (event) => {
-      if (event.target.id === 'undo') {
+      if (event.target.className === 'undo') {
         const cur = state.completedlist.find(
           (todo) => +todo.id === +event.target.id
         );
