@@ -142,3 +142,7 @@ svg{
 button:hover{
   background-color: #004369;
 }
+
+#submit_btn:hover, #submit_edit:hover{
+  background-color: #004369;
+}
